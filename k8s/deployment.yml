@@ -17,6 +17,6 @@ spec:
        spec:
           containers:
               - name: netflix
-                image: netflix-new-img:1
+                image: asadkhan03/netflix-new-img:1
                 ports:
                    - containerPort: 3000 
