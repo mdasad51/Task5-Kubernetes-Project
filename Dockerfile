@@ -28,4 +28,4 @@ EXPOSE 3000
 # Specify the command to run the application
 CMD ["serve", "-s", "build"]
 
-CMD ["npm", "start"]
+CMD ["npm", "start" ]
