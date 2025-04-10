@@ -1,0 +1,47 @@
+pipeline{
+    agent any
+    stages{
+        stage("Code Checkout"){
+            steps{
+            git url: "https://github.com/mdasad1270/Netflix.git",branch: "main"
+            echo "Code Checkout Successfully"   
+            }
+        }
+        stage("Build Image"){
+            steps{
+             sh "docker build -t netflix-new-img:${BUILD_NUMBER} ."
+             echo "Image Build Successfully"   
+            }
+        }
+        stage("Image Push To Docker Hub"){
+            steps{
+             withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerPass",usernameVariable:"dockerUser")]){
+             sh "docker login -u ${env.dockerUser} -p ${env.dockerPass}"
+             sh "docker tag netflix-new-img:${BUILD_NUMBER} ${env.dockerUser}/netflix-new-img:${BUILD_NUMBER}"
+             sh "docker push  ${env.dockerUser}/netflix-new-img:${BUILD_NUMBER}"
+             echo "Image Push To Docker Hub"
+             }
+            }
+        }
+        stage("Update Image Tag"){
+            environment {
+            GIT_REPO_NAME = "Netflix"
+            GIT_USER_NAME = "mdasad1270"
+        }
+            steps{
+                withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+                sh '''
+                    git config user.email "asadkhan.@gmail.com"
+                    git config user.name "Asad Khan"
+                    BUILD_NUMBER=${BUILD_NUMBER}
+                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" k8s/deployment.yml
+                    git add k8s/deployment.yml
+                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                '''
+                 echo "Image Tag Updated"
+                }
+            }
+        }
+    }
+}
