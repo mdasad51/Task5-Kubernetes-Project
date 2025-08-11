@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: netflix-deployment
+    labels:
+        app: netflix
+spec:
+    replicas: 5
+    selector:
+        matchLabels:
+            app: netflix
+    template:
+       metadata:
+          name: netflix-ctr
+          labels:
+              app: netflix
+       spec:
+          containers:
+              - name: netflix
+                image: asadkhan03/netflix-new-img
+                ports:
+                   - containerPort: 3000
