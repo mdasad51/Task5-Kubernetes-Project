@@ -1,3 +1,5 @@
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/homescreen.jpg?raw=true)
+
 ## Setting Up the Netflix Clone Application
 
 Follow these steps to set up and run the Netflix clone application on your local machine:
@@ -60,3 +62,23 @@ serve -s build -l 4000
 Now you should be able to access the Netflix clone application by opening your web browser and navigating to `http://localhost:4000`.
 
 Enjoy exploring the Netflix clone!
+
+## (AKS)Kubernetes running nodes
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/Screenshot%202025-08-11%20170258.png?raw=true)
+
+## Running Application Pods 
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/Screenshot%202025-08-11%20184622.png?raw=true)
+
+## Now Scale this Application deployment using kubectl scale
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/Screenshot%202025-08-11%20184834.png?raw=true)
+## Describe Pods to check everything is fine
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/Screenshot%202025-08-11%20185015.png?raw=true)
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/Screenshot%202025-08-11%20185035.png?raw=true)
+
+## Make application accessable using LoadBalancer(Service Type)
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/Screenshot%202025-08-11%20185321.png?raw=true)
+
+## UI of the Application
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/Screenshot%202025-08-11%20185457.png?raw=true)
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/Screenshot%202025-08-11%20185520.png?raw=true)
+![image alt](https://github.com/mdasad51/Task5-Kubernetes-Project/blob/main/images/demo1.png?raw=true)
